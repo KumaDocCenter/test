@@ -1,0 +1,4 @@
+#!/bin/sh
+
+command -v git-lfs >/dev/null 2>&1 || { echo >&2 "\n这个存储库是为Git LFS配置的，但是在您的路径上没有找到'git-lfs'。如果不再希望使用Git LFS，可以通过删除 .git/hooks/post-commit 来删除这个钩子。\n"; exit 2; }
+git lfs pre-push "$@"

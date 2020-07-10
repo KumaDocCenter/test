@@ -1,0 +1,220 @@
+# Hexo 站点配置文件
+## Docs: https://hexo.io/docs/configuration.html
+## Source: https://github.com/hexojs/hexo/
+
+############## 网站配置(Site) ##############
+title: Kuma's Blog
+subtitle: Kuma桑の博客，Hexo强力驱动
+description: 爱分享，爱技术，爱生活。
+keywords:  Html,Javascript,CSS,PHP
+author: Kuma
+language: zh-CN
+timezone: Asia/Shanghai
+
+############## 网址(URL) ##############
+##  如果你的站点要放入子目录, 请将url设置为'http://yoursite.com/child' 并将根目录设置为'/child/' 
+url: http://blog.kuma8866.top/
+root: /
+#[永久链接]
+# https://hexo.io/zh-cn/docs/permalinks
+# permalink: :year/:month/:day/:title/  
+# permalink:  post/:category/:title/    
+# permalink:  post/:title/       #配合auto_category插件，不使用分类(:category)
+permalink: posts/:abbrlink/    #hexo-abbrlink插件配置
+permalink_defaults: 
+pretty_urls:
+  trailing_index: false #设置为false以从永久链接中删除尾部的 'index.html'
+  trailing_html: false  #设置为false以从永久链接中删除尾部的 '.html'
+
+############## 目录(Directory) ##############
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code  #source_dir 下的子目录
+i18n_dir: :lang
+skip_render:
+  - README.md
+  
+############## 文章(Writing) ##############
+new_post_name: :title.md #新建文章的文件名
+default_layout: post
+titlecase: false #转换标题为首字母大写
+external_link:
+  enable: true #在新选项卡中打开外部链接
+  field: site  #生效范围:网站(site)，文章(post)
+  exclude: ''  
+filename_case: 0
+render_drafts: false
+post_asset_folder: true
+relative_link: false
+future: true
+highlight:
+  enable: true
+  line_number: true
+  auto_detect: false
+  tab_replace: ''
+  wrap: true
+  hljs: false
+
+############## 主页设置(Home page setting)  ##############
+# path: 你的博客首页根路径 (默认 = '')
+# per_page: 每页显示文章数量 (0 = 禁用分页)
+# order_by: 文章排序 (默认为按日期降序)
+index_generator:
+  path: ''
+  per_page: 10
+  order_by: -date
+
+############## 分类和标签(Category & Tag) ##############
+#[默认分类]
+default_category: default
+#[分类映射]
+# 冒号左边的是正式名称，右边的是访问路径
+# 在Front-matter里，分类可写中文，最终的链接会翻译成英文。
+# 标签同理 示例：
+# category_map:
+#   综合: common
+category_map:
+    开发: Dev
+    个人: Pre
+#[标签映射]
+tag_map:
+
+############## 元数据元素(Metadata elements) ##############
+## https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
+meta_generator: true
+
+############## 日期/时间格式(Date/Time format) ##############
+## Hexo 使用 Moment.js 来解析和显示时间
+## 你可以自定义日期格式在如下所定义范围内
+## http://momentjs.com/docs/#/displaying/format/
+date_format: YYYY-MM-DD
+time_format: HH:mm:ss
+## 使用post的日期作为更新日期，除非在front-matter中设置
+use_date_for_updated: false
+
+############## 分页(Pagination) ##############
+## 设置 per_page 为0时禁用分页
+per_page: 10
+pagination_dir: page
+
+############## 包含/排除文件(Include/Exclude file(s)) ############## 
+## include:/exclude: 选项只应用到 'source/' 文件夹
+include:
+exclude:
+ignore:
+
+############## 部署(Deployment) ##############
+## Docs: https://hexo.io/zh-cn/docs/one-command-deployment
+## 注: 因不用自带的Hexo d部署，所以都注释掉
+#deploy:
+#[SSH方式]
+# type: git
+# repo:  
+#   github: git@github.com:KumaNNN/hexo.git,master
+#[HTTPS方式]
+# type: git
+# repo: https://github.com/KumaNNN/KumaNNN.github.io.git
+# branch: master
+# message:  
+
+############## 扩展(Extensions) ############## 
+## Plugins: https://hexo.io/plugins/
+## Themes: https://hexo.io/themes/
+theme: landscape
+
+#-------------- RSS --------------  
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+  content: true
+  content_limit: 140
+  content_limit_delim: ' '
+  order_by: -date
+
+#-------------- 搜索 -------------- 
+#[本地搜索]
+search:
+  path: search.json
+  field: post
+  format: html
+  limit: 10000
+
+#-------------- SEO -------------- 
+#[生成站点地图用于SEO优化]
+sitemap:                    
+  path: sitemap.xml
+
+#[用于提交给百度的 SEO 优化]
+# URL为自定义，不能使用github的
+baidusitemap:                
+  path: baidusitemap.xml
+  url: http://blog.kuma8866.top
+
+#-------------- 字数显示设置 --------------  
+symbols_count_time:
+  symbols: true
+  time: true
+  total_symbols: true
+  total_time: true
+
+#-------------- Hexo admin --------------  
+#[hexo-admin 认证]
+admin:
+  username: admin
+  password_hash: $2a$10$LHKt8gyDQ34WoyLM.AMe2Oql5rd3GmRnfJERhG1SWmNu7gNVMK8RO
+  secret: kdsfjsdklfj
+
+#-------------- 自定义配置 --------------
+Me: 
+  # true:  底部显示 <a href="/admin" target="_blank">author</a>
+  # false: 底部显示 author
+  author_as_admin: true
+
+#-------------- HEXO-自动分类 --------------
+# URL: https://github.com/xu-song/hexo-auto-category
+#[按文件夹名称自动生成类别]
+# 注: 已由 HEXO-abbrlink 插件实现,此处配置保持 false
+# depth: 你想生成目录树的深度，应 > 0 
+auto_category:
+ enable: false
+ depth: 3
+
+#-------------- HEXO-abbrlink --------------
+# URL: https://github.com/rozbo/hexo-abbrlink
+#[为hexo的每个帖子自动创建一个且唯一的链接]
+# 会修改source中md文件的YAML数据
+# 格式： abbrlink: 738503265
+#   如果YAML中abbrlink属性不存在，则根据title的值来生成abbrlink的值
+#   如果YAML中abbrlink属性存在，则使用已存在的abbrlink的值(此时更改title也不会产生新的值)
+#
+#有两级设置：
+# alg -- Algorithm (目前支持 crc16 和 crc32 ，默认为crc16)
+# rep -- Represent (生成的链接可以用十六进制<hex>或十进制<dec>值表示，默认为dec)
+#
+# 示例：
+# crc16 & hex
+# https://post.zz173.com/posts/66c8.html
+# crc16 & dec
+# https://post.zz173.com/posts/65535.html
+# crc32 & hex
+# https://post.zz173.com/posts/8ddf18fb.html
+# crc32 & dec
+# https://post.zz173.com/posts/1690090958.html
+# crc16的最大帖子数为65535。（对于个人博客网站，这个数字还算不错）
+abbrlink:
+  alg: crc32  
+  rep: dec    
+  # 按文件夹名称自动生成类别
+  # depth: 你想生成目录树的深度，应 > 0 
+  # 若要重新生成类别，请清除abbrlink属性在front-matter中 
+  # 参考：HEXO-自动分类(https://github.com/xu-song/hexo-auto-category)
+  auto_category:
+     enable: true
+     depth: 2
+  #是否对草稿处理
+  drafts: false
